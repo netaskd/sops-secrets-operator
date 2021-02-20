@@ -7,6 +7,14 @@
 
 # SOPS: Secrets OPerationS - Kubernetes Operator
 
+Info about the fork
+```bash
+Fork with support SOPS option encrypted_regex instead encrypted_suffix
+It gives possibility to use Helm variables in spec.secretTemplates.name
+Original issue: https://github.com/isindir/sops-secrets-operator/issues/27 was closed (won't fix)
+I have no good knowledge of writing CRD, so it just a hot replacement without creating PR.
+```
+
 Operator which manages Kubernetes Secret Resources created from user defined SopsSecrets
 CRs, inspired by [Bitnami SealedSecrets](https://github.com/bitnami-labs/sealed-secrets) and
 [sops](https://github.com/mozilla/sops). SopsSecret CR defines multiple
@@ -164,7 +172,7 @@ EOF
 ```bash
 sops --encrypt \
   --kms 'arn:aws:kms:<region>:<account>:alias/<key-alias-name>' \
-  --encrypted-suffix='Templates' jenkins-secrets.yaml \
+  --encrypted-regex='^data' jenkins-secrets.yaml \
   > jenkins-secrets.enc.yaml
 ```
 
@@ -173,7 +181,7 @@ sops --encrypt \
 ```bash
 sops --encrypt \
   --gcp-kms 'projects/<project-name>/locations/<location>/keyRings/<keyring-name>/cryptoKeys/<key-name>' \
-  --encrypted-suffix='Templates' jenkins-secrets.yaml \
+  --encrypted-regex='^data' jenkins-secrets.yaml \
   > jenkins-secrets.enc.yaml
 ```
 
@@ -182,7 +190,7 @@ sops --encrypt \
 ```bash
 sops --encrypt \
   --azure-kv 'https://<vault-url>/keys/<key-name>/<key-version>' \
-  --encrypted-suffix='Templates' jenkins-secrets.yaml \
+  --encrypted-regex='^data' jenkins-secrets.yaml \
   > jenkins-secrets.enc.yaml
 ```
 
@@ -191,7 +199,7 @@ sops --encrypt \
 ```bash
 sops --encrypt \
   --pgp '<pgp-finger-print>' \
-  --encrypted-suffix='Templates' jenkins-secrets.yaml \
+  --encrypted-regex='^data' jenkins-secrets.yaml \
   > jenkins-secrets.enc.yaml
 ```
 

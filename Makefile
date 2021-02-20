@@ -8,7 +8,7 @@ CONTROLLER_TOOLS_VERSION := "v0.3.0"
 # Use existing cluster instead of starting processes
 USE_EXISTING_CLUSTER ?= true
 # Image URL to use all building/pushing image targets
-IMG_NAME ?= isindir/sops-secrets-operator
+IMG_NAME ?= netaskd/sops-secrets-operator
 IMG ?= ${IMG_NAME}:${SOPS_SEC_OPERATOR_VERSION}
 IMG_LATEST ?= ${IMG_NAME}:latest
 # Produce CRDs that work back to Kubernetes 1.11 (no version conversion)

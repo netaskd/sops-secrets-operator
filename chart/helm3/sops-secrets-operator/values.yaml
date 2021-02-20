@@ -5,7 +5,7 @@
 replicaCount: 1  # Deployment replica count  - should not be modified
 
 image:
-  repository: isindir/sops-secrets-operator  # Operator image
+  repository: netaskd/sops-secrets-operator  # Operator image
   tag: 0.1.10  # Operator image tag
   pullPolicy: Always  # Operator image pull policy
 

@@ -133,7 +133,7 @@ type SopsMetadata struct {
 	Version string `json:"version,omitempty"`
 	// EncryptedSuffix - sops setting
 	// +optional
-	EncryptedSuffix string `json:"encrypted_suffix,omitempty"`
+	EncryptedSuffix string `json:"encrypted_regex,omitempty"`
 }
 
 // SopsSecretStatus defines the observed state of SopsSecret
